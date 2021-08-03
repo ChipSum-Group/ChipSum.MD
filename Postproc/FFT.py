@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 #  3. You must modify the input .pos file in line 27.                             #
 #Note:                                                                            #
 #  1. This code is now only approprate for atomic type whose atomic number is 1.  #
-#  2. This code is suggested to use after MSDVASP.py/MADQE.py.                    #
+#  2. This code is suggested to use after MSDVASP.py/MSDQE.py.                    #
 ###################################################################################
 
 N = 5000                               #样品个数

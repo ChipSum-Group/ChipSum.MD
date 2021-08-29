@@ -12,8 +12,8 @@ import linecache
 #####################################################################################################
 
 
-file1, file2 = 'Fe.pos', 'O.pos'
-atom1, atom2 = 'Fe', 'O'
+file1, file2 = 'Cl.pos', 'O.pos'
+atom1, atom2 = 'Cl', 'O'
 rmax = 10
 dr = 0.1
 nomp = int(rmax/dr)
@@ -56,23 +56,24 @@ for i in (-1, 0, 1):
       tr_ma.append(np.array([[i,0,0],[0,j,0],[0,0,k]]))
 
 def supcell(position,ca):
-  array = np.array(position)
+  array = position
   base_matrix = np.array([[ca,ca,ca]]*len(array))
   new_position = []
   for mi in tr_ma:
     new_pos = array+np.dot(base_matrix, mi)
     new_position = new_position + new_pos.tolist()
-  return new_position
+  return np.array(new_position)
 
 def calbond(aposition, bposition):
-  lb = len(bposition)
-  arraya = np.array(aposition)
+  lb = len(bposition) 
+  aposition1 = [aposition]*lb
+  arraya = np.array(aposition1)
   arrayb = np.array(bposition)
-  bond_len = []
-  for j in range(lb):
-      bd = np.sqrt(np.sum((arraya-arrayb[j])**2))
-      bond_len.append(bd)
-  return sorted(bond_len)
+  bond0 = (arrayb-arraya).tolist()
+  bond1 = supcell(bond0, alat)
+  bond2 = np.sqrt(np.sum(bond1**2, axis=1))
+  bond_len = sorted(bond2.tolist())
+  return bond_len
 
 def rdf(bdre):
     bondlength = bdre
@@ -97,6 +98,7 @@ def rdf(bdre):
         if counter1[i] == 0:
             counter1[i] = counter1[i-1]
     grn = counter1[:]
+#   print(grn)
     return gr, grn
 
 for x in range(1, num_conf1+1):
@@ -104,8 +106,7 @@ for x in range(1, num_conf1+1):
       print(x)
     df, dfn = [], []
     for p1 in pos1[(x-1)*num1:x*num1]:
-        p2pos = supcell(pos2[(x-1)*num2:x*num2], alat)
-        bd = calbond(p1, p2pos)
+        bd = calbond(p1, pos2[(x-1)*num2:x*num2])
         grr, grrn = rdf(bd)
         df.append(grr); dfn.append(grrn)
     df = np.mean(df, axis=0)

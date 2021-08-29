@@ -1,7 +1,6 @@
 #user/bin/python3
 import numpy as np
 import linecache
-from itertools import groupby
 
 #####################################################################################################
 #               Calculate bond length from VASP MD                                                  #
@@ -105,7 +104,8 @@ for x in range(1, num_conf1+1):
       print(x)
     df, dfn = [], []
     for p1 in pos1[(x-1)*num1:x*num1]:
-        bd = calbond(p1, pos2[(x-1)*num2:x*num2])
+        p2pos = supcell(pos2[(x-1)*num2:x*num2], alat)
+        bd = calbond(p1, p2pos)
         grr, grrn = rdf(bd)
         df.append(grr); dfn.append(grrn)
     df = np.mean(df, axis=0)

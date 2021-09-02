@@ -60,3 +60,5 @@ with open(file_name,"w") as file_object:
     for j in range(0,numpy.shape(aDFT)[1]):
       file_object.write(str(aDFT[i,j])+" ")
     file_object.write("\n")
+
+    

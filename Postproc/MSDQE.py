@@ -82,3 +82,5 @@ with open(file_name, "w") as file_object:
       for j in range(0,len(line)):
         file_object.write(str(line[j])+" ")
       file_object.write("\n")
+
+      

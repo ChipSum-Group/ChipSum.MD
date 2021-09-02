@@ -66,18 +66,17 @@ def calbond(aposition, bposition):
   arrayb = np.array(bposition)
   bond_len = []
   for i in range(la):
-    bond = []
-    for j in range(lb):
-      bd = np.sqrt(np.sum(pow((arraya[i]-arrayb[j]),2)))
-      bond.append(bd)
-    bond_len.append(sorted(bond))
+    posa = np.array([arraya[i].tolist()]*lb)
+    bd0 = (posa - arrayb).tolist()
+    bd1 = np.array(supcell(bd0, alat))
+    bond = np.sqrt(np.sum(bd1**2, axis=1))
+    bond_len.append(sorted(bond.tolist()))
   return bond_len
 
 for x in range(1, num_conf1+1):
   if x%100 == 0:
     print(x)
-  ext_pos2 = supcell(pos2[(x-1)*num2:x*num2],alat)
-  bl = calbond(pos1[(x-1)*num1:x*num1], ext_pos2)
+  bl = calbond(pos1[(x-1)*num1:x*num1], pos2[(x-1)*num2:x*num2])
   out.append(bl)
 print(np.array(out).shape)
 for i in range(num1):

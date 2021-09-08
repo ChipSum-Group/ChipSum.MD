@@ -6,7 +6,7 @@ import numpy
 #                                                                                             #
 # Usage: python3 MSDVASP.py.                                                                  #
 # This code need the XDATCAR in the directory.                                                #
-# The variable you need modify is 'dt' and 'skip',note that the latter is the skip of the     #
+# The variable you need modify is 'potim' and 'skip',note that the latter is the skip of the     #
 # configurarions in XDATCAR, and the former is the variable of 'POTIM' set in INCAR.          #
 ###############################################################################################
 

@@ -63,15 +63,15 @@ if choice2 == 'yes':
         ax.set_xlabel('X', fontdict={'size':15, 'color':'black'})
         ax.set_ylabel('Y', fontdict={'size':15, 'color':'black'})
         ax.set_zlabel('Z', fontdict={'size':15, 'color':'black'})
-        ax.set_title(atom, {'fontsize':20})
+        ax.set_title(atom+str(system[atom]), {'fontsize':20})
         for j in range(num):
             x, y, z = array_pos[:,j,0].tolist(), array_pos[:,j,1].tolist(), array_pos[:,j,2].tolist()
             ax.scatter(x, y, z, s=5, c=time, cmap=plt.cm.viridis_r, edgecolor='none')
         plt.savefig(path+'/'+atom+'.jpg', bbox_inches='tight')
         plt.close(fig)
 elif choice2 == 'no':
-    for atom in system.keys():
-        num = system[atom]
+    for atom in selection.keys():
+        num = selection[atom]
         file_atom = atom+".pos"
         pos_all, pos_modify = [], []
         with open(file_atom) as file:
@@ -89,6 +89,7 @@ elif choice2 == 'no':
             fig = plt.figure(figsize=(10,10), dpi=125)
             ax = Axes3D(fig)
             ax.scatter(x, y, z, s=10, c=time, cmap=plt.cm.winter_r, edgecolor='none')
+            ax.tick_params(labelsize=12)
             ax.set_xlabel('X', fontdict={'size':15, 'color':'black'})
             ax.set_ylabel('Y', fontdict={'size':15, 'color':'black'})
             ax.set_zlabel('Z', fontdict={'size':15, 'color':'black'})

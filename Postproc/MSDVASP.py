@@ -29,7 +29,9 @@ with open('XDATCAR') as file:
         po.append(ll)
     
 Ntype = len(po[5])                      #numbers of atom types  
-cell = float(po[2][0])                 #cell paramater
+cell = [[float(po[2][0]),float(po[2][1]),float(po[2][2])],
+        [float(po[3][0]),float(po[3][1]),float(po[3][2])],
+        [float(po[4][0]),float(po[4][1]),float(po[4][2])]]      #cell paramater
 N = sum(int(po[6][k]) for k in range(Ntype))  #number of atoms in the system
 confs = int(len(po[7:])/(N+1))                      #numbers of configurations
 atom = po[5][:]                          #atoms figures
@@ -46,16 +48,17 @@ for j in range(Ntype):
 msd.append(msd_first_line)
 
 print('MD system is: '+system)
-print('Cell parameter is: '+str(cell)+' A')
+print('Cell parameter is:)
+print(cell)
 print('Number of atom types is: ' + str(Ntype))
 print('Number of configurations is: '+str(confs))
 print('There are '+str(N)+' atoms in each configuration')
 
 for jtem in po[7:]:
     if jtem[0] != 'Direct': 
-        pos.append([float(jtem[0])*cell, float(jtem[1])*cell, float(jtem[2])*cell])
+        pos.append([float(jtem[0]), float(jtem[1]), float(jtem[2])])
 
-apos = numpy.array(pos);print(numpy.shape(apos))
+apos = numpy.dot(numpy.array(pos),numpy.array(cell));print(numpy.shape(apos))
 
 for k, v in n_files.items():
     site = fns.index(k)

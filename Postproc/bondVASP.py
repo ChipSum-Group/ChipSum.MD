@@ -1,6 +1,6 @@
 #user/bin/python3
 import numpy as np
-import linecache
+import linecache, sys
 
 #####################################################################################################
 #               Calculate bond length from VASP MD                                                  #
@@ -12,13 +12,18 @@ import linecache
 #####################################################################################################
 
 
-file1, file2 = 'Cl.pos', 'O.pos'
-atom1, atom2 = 'Cl', 'O'
+atom1 = sys.argv[1].title()
+atom2 = sys.argv[2].title()
+file1, file2 = atom1+'.pos', atom2+'.pos'
 count = 10
 
 out = []
 alatx = linecache.getline('POSCAR', 3).strip(' ').split()
-alat = float(alatx[0])
+alaty = linecache.getline('POSCAR', 4).strip(' ').split()
+alatz = linecache.getline('POSCAR', 5).strip(' ').split()
+alat = [[float(alatx[0]),float(alatx[1]),float(alatx[2])],
+        [float(alaty[0]),float(alaty[1]),float(alaty[2])],
+        [float(alatz[0]),float(alatz[1]),float(alatz[2])]]
 species = linecache.getline('POSCAR', 6).strip(' ').split()
 num_species = linecache.getline('POSCAR', 7).strip(' ').split()
 if atom1 not in species or atom2 not in species:
@@ -49,14 +54,13 @@ tr_ma = []
 for i in (-1, 0, 1):
   for j in (-1, 0, 1):
     for k in (-1, 0, 1):
-      tr_ma.append(np.array([[i,0,0],[0,j,0],[0,0,k]]))
+      tr_ma.append(np.array([i,j,k]))
 
 def supcell(position,ca):
   array = np.array(position)
-  base_matrix = np.array([[ca,ca,ca]]*len(array))
   new_position = []
   for mi in tr_ma:
-    new_pos = array+np.dot(base_matrix, mi)
+    new_pos = array+np.dot(mi, ca)
     new_position = new_position + new_pos.tolist()
   return new_position
 
@@ -86,3 +90,11 @@ for i in range(num1):
       for k in range(count):
         wfe.write(str(out[j][i][k])+", ")
       wfe.write("\n")
+if num1 > 1:
+    ave_out = np.sum(out, axis=1)/num1
+    file_ave = atom1+'-'+atom2+'_average.out'
+    with open(file_ave, "w") as wfe:
+        for j in range(num_conf1):
+            for k in range(count):
+                wfe.write(str(ave_out[j][k])+", ")
+            wfe.write("\n")

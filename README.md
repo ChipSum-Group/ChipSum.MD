@@ -12,3 +12,5 @@ FFT.py: Make FFT(Fast Fourier Transform) of atom position from MSDVASP.py and MS
 RDFVASP.py: Calculate RDF(Radial distribution function) of pair atoms from MSDVASP.py and MSDQE.py output file .pos.
 
 plot_trajectory.py: Plot motion trajectory graphs of atoms from MSDVASP.py and MSDQE.py output file .pos.
+
+cal_SED.py: Calculate the spectral energy density (SED) from MD trajectory and then Phonon dispersion and Phonon density of states (DOS).

@@ -12,17 +12,25 @@ ChipSum's toolkits serve computational chemistry applications in CDCS, including
    - **Note:** `XDATCAR` file shoule be in the directory. The detial notes are in the scripts. 
 
 ### Bond length
-`bondVASP.py`: Calculate and analyze bond length from VASP molecular dynamic simulation output file `XDATCAR`.<br>
+`bondVASP.py` is used to calculate and analyze the bond length from VASP molecular dynamic simulation output file `XDATCAR`.<br>
+
+   - **Usage:** `python3 bondVASP.py ele1 ele2`
+   - **Note:** `ele1` and `ele2` are element symblo case-insensitive. The detial notes are in the scripts.
 
 ### Fast Fourier Transform (FFT)
-`FFT.py`: Make FFT of atom position from `MSDVASP.py` and `MSDQE.py` output file `.pos`.<br>
+`FFT.py` is used to make FFT of atom position from `MSDVASP.py` and `MSDQE.py` output file `.pos`.<br>
 
 ### Radial Distribution Function (RDF)
-`RDFVASP.py`: Calculate RDF of pair atoms from `MSDVASP.py` and `MSDQE.py` output file `.pos`.<br>
+`RDFVASP.py` is used to calculate RDF of pair atoms from `MSDVASP.py` and `MSDQE.py` output file `.pos`.<br>
+
+   - **Usage:** `python3 RDFVASP.py`
 
 ### Plot motion trajectory graphs
-`plot_trajectory.py`: Plot motion trajectory graphs of atoms from MSDVASP.py and MSDQE.py output file .pos.<br>
+`plot_trajectory.py` is used to plot motion trajectory graphs of atoms from MSDVASP.py and MSDQE.py output file .pos.<br>
 
 ### Spectral Energy Density (SED)
-`cal_SED.py`: Calculate the SED from MD trajectory and then Phonon dispersion and Phonon density of states (DOS).<br>
+`cal_SED.py` is used to calculate the SED from MD trajectory and then Phonon dispersion and Phonon density of states (DOS).<br>
+
+   - **Note:** Details notes is in the directory of `Postproc/SED/`
+   - **Example:** SWNT
 ![SWNT](https://github.com/EltonYH/ChipSum.MD/blob/main/Postproc/img/swnt_small.png)

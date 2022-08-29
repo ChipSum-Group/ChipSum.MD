@@ -8,7 +8,8 @@ ChipSum's toolkits serve computational chemistry applications in CDCS, including
 `MSDVASP.py` is used to calculate MSD from VASP molecular dynamic simulation output file `XDATCAR`.
 `MSDQE.py` is used to calculate MSD from QE molecular dynamic simulation output file `.pos`.<br>
 
-   - ** Usage: ** `python3 MSDVASP.py/MSDQE.py`
+   - **Usage:** `python3 MSDVASP.py/MSDQE.py`
+   - **Note:** `XDATCAR` file shoule be in the directory. The detial notes are in the scripts. 
 
 ### Bond length
 `bondVASP.py`: Calculate and analyze bond length from VASP molecular dynamic simulation output file `XDATCAR`.<br>

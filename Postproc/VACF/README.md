@@ -3,8 +3,8 @@ The VACF is an important tool to analyze the atom vibrations in the MD simulatio
 
    - **Usage:** `python3 cal_VACF.py dev=0/1/2/3 num=10000/20000/30000/...`
 
-     `dev`: the derivation order of trajectory position.
-     `num`: the number of MD last steps used to calculate VACF.
+             `dev`: the derivation order of trajectory position.<br>
+             `num`: the number of MD last steps used to calculate VACF.<br>
 
    - **Note:** It is suggested to use this script after `output_pos.py` and `comb.sh`
    

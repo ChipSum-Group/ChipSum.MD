@@ -2,7 +2,7 @@
 ChipSum's toolkits serve computational chemistry applications in CDCS, including molecular dynamics simulation and the calculation of the physical and chemical properities.
         
 
-## Function
+## Functions
 
 ### Mean Squared Displacement (MSD)
 `MSDVASP.py` is used to calculate MSD from VASP molecular dynamic simulation output file `XDATCAR`.

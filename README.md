@@ -1,6 +1,8 @@
 # ChipSum.MD
 ChipSum's toolkits serve computational chemistry applications in CDCS, including molecular dynamics simulation and the calculation of the physical and chemical properities.
-        
+
+   - **Preproc:** Some scripts to deal with the problems occur before calculation or simulation, such as the input parameters suggestion, format transformation and so on.
+   - **Postproc:** Some scripts to deal with the problems occur after calculation or simulation, such as the data analyse, plotting graph and so on.
 
 ## Functions
 

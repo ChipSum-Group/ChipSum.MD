@@ -28,7 +28,7 @@ ChipSum's toolkits serve computational chemistry applications in CDCS, including
    - **Usage:** `python3 RDFVASP.py`
 
 ### Plot motion trajectory graphs
-`plot_trajectory.py` is used to plot motion trajectory graphs of atoms from MSDVASP.py and MSDQE.py output file .pos.<br>
+`plot_trajectory.py` is used to plot motion trajectory graphs of atoms from `MSDVASP.py` and `MSDQE.py` output file `.pos`.<br>
 
 ### Spectral Energy Density (SED)
 `cal_SED.py` is used to calculate the SED from MD trajectory and then Phonon dispersion and Phonon density of states (DOS).<br>

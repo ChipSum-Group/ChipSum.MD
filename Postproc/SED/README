@@ -1,7 +1,7 @@
-#Spectral Energy Density (SED) 
+# Spectral Energy Density (SED) 
 SED is the phonon energy spectral density, which is used to analyze the phonon dispersion of materials after MD simulations.<br>
 
-##Usage
+## Usage
 `python3 cal_SED.py dev=0/1/2/3 num=10000/20000/30000/..`<br>
 
 `dev`: the order of derivation of atom position, 1st order means velocity, 2nd order means acceleration....<br>

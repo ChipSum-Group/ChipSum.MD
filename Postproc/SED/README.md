@@ -7,5 +7,10 @@ SED is the phonon energy spectral density, which is used to analyze the phonon d
 `dev`: the order of derivation of atom position, 1st order means velocity, 2nd order means acceleration....<br>
 `num`: the number of steps you will used to calculate the SED, which means the last num MD steps will be adopted. <br>
 
-Note: this script is used for MS trajectory, thus, you should convert your MS trajectory file (xtd) to reading file (xyz in txt).<br>
-You can use the script of "xtd2xyz.pl" which will be found in the internet, and the author is Andrea Minoia.
+## Note
+This script is used for MS trajectory, thus, you should convert your MS trajectory file (xtd) to reading file (xyz in txt).
+You can use the script of `xtd2xyz.pl` which will be found in the internet, and the author is Andrea Minoia.
+
+## Example
+Here is an example calculating the Single wall carbon nanotubes (SWNT) SED.<br>
+![SWNT_SED](https://github.com/EltonYH/ChipSum.MD/blob/main/Postproc/img/swnt_small.png)
